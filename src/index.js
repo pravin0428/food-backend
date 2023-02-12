@@ -7,12 +7,13 @@ const cors = require("cors");
 const connect = require("./Config/db")
 const PORT = process.env.PORT || 3000
 const ProductsRoute = require("./Routes/ProductRoutes")
+const AuthRoutes = require("./Routes/AuthRoutes")
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/posts", ProductsRoute );
- 
+app.use("/auth" , AuthRoutes) 
  
 
 app.listen(PORT, async () => {
