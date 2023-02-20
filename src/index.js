@@ -13,12 +13,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/posts", ProductsRoute );
-app.use("/auth" , AuthRoutes) 
- 
+ app.get("/allusers" , AuthRoutes.GetAllUser)
+  app.post("/signup",AuthRoutes.Signup)
+  app.post("/login",AuthRoutes.Login) 
 
-app.listen(PORT, async () => {
-    await connect();
-    console.log(`listning to http://localhost:${PORT}`)
+app.listen(PORT,() => {
+    try{
+        connect();
+        console.log(`listning to http://localhost:${PORT}`)
+    }catch(err){
+        console.log(err);
+    }
 })
  
 
